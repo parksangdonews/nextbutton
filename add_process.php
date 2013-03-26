@@ -9,25 +9,24 @@ mysql_query("set session character_set_connection=utf8;");
 mysql_query("set session character_set_results=utf8;");
 mysql_query("set session character_set_client=utf8;");
 
-$title = $_POST('title');
-$description = $_POST('description');
+$title = $_POST['title'];
+$description = $_POST['description'];
 
 echo $title;
 
 if ((!empty($title) && (!empty($description)))) {
 
-
-$sql = "INSERT into topic ( title, description )
-		VALUES ( ".$title.",".$description.")";
+	$sql = "INSERT into topic ( title, description, created )
+		VALUES ( '" . $title . "','" . $description . "',now() )";
 
 	mysql_query($sql);
-	
+
 	//$topic = mysql_fetch_assoc($result);
-	
+
 	echo "<script>
 			alert('입력 완료');
-			location.href=\"index.php?id=".mysql_insert_id()."\";
-			</script>";		 
+			location.href=\"index.php?id=" . mysql_insert_id() . "\";
+			</script>";
 } else {
 	echo "
 			 <script>
@@ -117,7 +116,7 @@ $sql = "INSERT into topic ( title, description )
 			<nav>
 				<a href="add.php" title="topic add">Topic 추가</a>
 				<ul>
- 
+
 				</ul>
 			</nav>
 			<article>
