@@ -93,7 +93,9 @@ width:500px;
 <input type="button" value="white" onclick="document.getElementById('body').className='white'" />
 </div>
 <nav>
+<a href="add.php" title="topic add">Topic 추가</a>
 <ul>
+<br/>
 <?php
 $sql="select id,title from topic";
 $result=mysql_query($sql);
@@ -108,7 +110,7 @@ echo "
 <article>
 <?php
 if(!empty($topic)){
-?>
+?>	
 <h2><?=$topic['title']?></h2>
 <div class="description">
 <?=$topic['description']?>
